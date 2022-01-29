@@ -10,7 +10,7 @@ def call(Map args) {
 
 def check() {
     env.CI_SKIP = "false"
-    result = bat (script: "git log -1 | grep '.*\\[ci skip\\].*'", returnStatus: true)
+    result = sh (script: "git log -1 | grep '.*\\[ci skip\\].*'", returnStatus: true)
     if (result == 0) {
         env.CI_SKIP = "true"
         error "'[ci skip]' found in git commit message. Aborting."
