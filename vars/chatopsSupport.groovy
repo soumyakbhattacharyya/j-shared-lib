@@ -1,5 +1,6 @@
 def call(Map args) {
     if (args.action == 'check') {
+	    println "within check method"
         return check()
     }
     if (args.action == 'postProcess') {
@@ -11,6 +12,7 @@ def call(Map args) {
 def check() {
     env.CI_SKIP = "false"
     result = sh (script: "git log -1 | grep '.*\\[ci skip\\].*'", returnStatus: true)
+	println "result " + result
     if (result == 0) {
         env.CI_SKIP = "true"
         error "'[ci skip]' found in git commit message. Aborting."
