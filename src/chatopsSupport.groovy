@@ -1,4 +1,4 @@
-// vars/ciSkip.groovy
+// vars/chatopsSupport.groovy
 
 def call(Map args) {
     if (args.action == 'check') {
