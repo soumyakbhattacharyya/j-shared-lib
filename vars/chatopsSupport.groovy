@@ -10,17 +10,19 @@ def call(Map args) {
 }
 
 def check() {
-    env.CI_SKIP = "false"
+    env.DESTROY_ENVIRONMENT = "true" // flag to destroy test environment as a default behavior
     result = sh (script: "git log -1 | grep 'KEEP_ON_FAILURE'", returnStatus: true)
 	println "result " + result
     if (result == 0) {
-        env.CI_SKIP = "true"
+        env.DESTROY_ENVIRONMENT = "false" // keep test environment 
         println "'[KEEP_ON_FAILURE]' found in git commit message. Keeping test environment intact."
     }
 }
 
 def postProcess() {
-    if (env.CI_SKIP == "true") {
-        currentBuild.result = 'NOT_BUILT'
-    }
+    if (env.DESTROY_ENVIRONMENT == "false") {
+        echo 'keeping environment as it is'
+    }else{
+		echo 'destroying environment'
+	}
 }
