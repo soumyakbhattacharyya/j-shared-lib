@@ -11,11 +11,11 @@ def call(Map args) {
 
 def check() {
     env.CI_SKIP = "false"
-    result = sh (script: "git log -1 | grep 'DESTROY_ON_FAILURE'", returnStatus: true)
+    result = sh (script: "git log -1 | grep 'KEEP_ON_FAILURE'", returnStatus: true)
 	println "result " + result
     if (result == 0) {
         env.CI_SKIP = "true"
-        error "'[ci skip]' found in git commit message. Aborting."
+        println "'[KEEP_ON_FAILURE]' found in git commit message. Keeping test environment intact."
     }
 }
 
