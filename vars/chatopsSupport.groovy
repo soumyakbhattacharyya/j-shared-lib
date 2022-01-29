@@ -2,8 +2,8 @@ def call(Map args) {
     if (args.action == 'check') {
 	    return check()
     }
-    if (args.action == 'postProcess') {
-        return postProcess()
+    if (args.action == 'terminateEnvironment') {
+        return terminateEnvironment()
     }
     error 'chatopsSupport has been called without valid arguments'
 }
@@ -17,7 +17,7 @@ def check() {
     }
 }
 
-def postProcess() {
+def terminateEnvironment() {
     if (env.DESTROY_ENVIRONMENT == "false") {
         echo 'keeping environment as it is'
     }else{
