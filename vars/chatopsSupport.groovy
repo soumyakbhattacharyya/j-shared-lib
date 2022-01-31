@@ -1,4 +1,13 @@
 def call(Map args) {
+
+    def user = "soumyakbhattacharyya"
+	def tokenId = "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"
+	def url = "https://api.github.com/repos/soumyakbhattacharyya/to-be-used-for-jenkins-poc/issues/comments"
+	def command = "curl -i -u $user:#tokenId $url"
+	println command.execute().text 
+
+
+
     if (args.action == 'check') {
 	    return check()
     }
