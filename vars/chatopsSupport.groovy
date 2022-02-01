@@ -4,11 +4,10 @@ def call(Map args) {
 
     def user = "soumyakbhattacharyya"
 	def tokenId = "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"
-	def url = "https://api.github.com/repos/soumyakbhattacharyya/to-be-used-for-jenkins-poc/issues/comments"
-	def command = "curl -i -u $user:#tokenId $url"
-	println command.execute().text
-    def slurper = new JsonSlurper().parseText(command.execute().text)
-    println slurper	
+	def url = "https://api.github.com/repos/soumyakbhattacharyya/to-be-used-for-jenkins-poc/issues/1/comments"
+	def text = url.toURL().getText(requestProperties: ['Authorization': "token ${tokenId}"])
+	def json = new JsonSlurper().parseText(text)
+	def bodyText = json.body
 
 
 
