@@ -5,7 +5,7 @@ def call(Map args) {
     def user = "soumyakbhattacharyya"
 	def tokenId = "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"
 	def url = "https://api.github.com/repos/soumyakbhattacharyya/to-be-used-for-jenkins-poc/issues/1/comments"
-	def text = url.toURL().getText(requestProperties: ['Authorization': "token ${tokenId}"])
+	def text = url.toURL().getText(requestProperties: ['Authorization': "${tokenId}"])
 	def json = new JsonSlurper().parseText(text)
 	def bodyText = json.body
 
