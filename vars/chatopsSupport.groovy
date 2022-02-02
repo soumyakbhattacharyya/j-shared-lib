@@ -1,14 +1,40 @@
 @Grab(group='org.codehaus.groovy.modules.http-builder', module='http-builder', version='0.7.1')
 import groovy.json.JsonSlurper
 import groovyx.net.http.HTTPBuilder
+import static groovyx.net.http.ContentType.*
+import static groovyx.net.http.Method.*
+
+class GithubSearchService {
+
+    private String authToken
+
+    public GithubSearchService(String authToken) {
+        this.authToken = authToken
+    }
+
+    public void search(String query) {
+        def http = new HTTPBuilder('https://api.github.com')
+
+        http.request(GET, JSON) { req ->
+            uri.path = 'repos/soumyakbhattacharyya/to-be-used-for-jenkins-poc/issues/1/comments'
+            headers.'Authorization' = "token $authToken"
+            headers.'Accept' = 'application/vnd.github.v3.text-match+json'
+            headers.'User-Agent' = 'Mozilla/5.0'
+            response.success = { resp, json ->
+                println "Got response: ${resp.statusLine}"
+                println "Content-Type: ${resp.headers.'Content-Type'}"
+                println json
+            }
+            response.failure = { resp, json ->
+                print json
+            }
+        }
+    }
+}
 
 def call(Map args) {
 
-  	String userPassBase64 = "soumyakbhattacharyya:Helpdesk@0202".toString().bytes.encodeBase64()    
-	def github = new HTTPBuilder('https://api.github.com/')
-	def emails = github.get(path: 'repos/soumyakbhattacharyya/to-be-used-for-jenkins-poc/issues/1/comments', headers: ["Authorization": "Basic $userPassBase64"])
-	def json = JsonSlurper().parseText(emails)
-	def bodyText = json.body
+  	new GithubSearchService('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').search()
 
 
     if (args.action == 'check') {
