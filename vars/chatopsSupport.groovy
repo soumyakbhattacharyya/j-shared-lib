@@ -12,9 +12,11 @@ def call(Map args) {
        count++	     
        def retVal = command.execute().text.drop(1175).trim()
        def list = new JsonSlurper().parseText(retVal)	
-       list.each {
-         println it.body
-       }
+       println list.last()
+
+       if (list.last() == "TERMINATE") 
+	    break
+	    
        Thread.sleep(5000)	    
     }
 
