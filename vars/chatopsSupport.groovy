@@ -1,3 +1,4 @@
+@Grab(group='org.codehaus.groovy.modules.http-builder', module='http-builder', version='0.7.1')
 import groovy.json.JsonSlurper
 import groovyx.net.http.HTTPBuilder
 
@@ -17,6 +18,10 @@ def call(Map args) {
         return terminateEnvironment()
     }
     error 'chatopsSupport has been called without valid arguments'
+}
+
+public Map request(String url) {
+        githubApi.get(path : url).responseData
 }
 
 def check() {
