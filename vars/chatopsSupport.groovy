@@ -5,6 +5,8 @@ def call(Map args) {
 	def url = "https://api.github.com/repos/soumyakbhattacharyya/to-be-used-for-jenkins-poc/issues/comments"
 	def command = "curl -i -u $user:#tokenId $url"
 	println command.execute().text
+	def retVal = command.execute().text
+	println retVal.drop(25).take(60) 
 
 
     if (args.action == 'check') {
