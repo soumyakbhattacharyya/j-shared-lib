@@ -11,7 +11,7 @@ def call(Map args) {
     def list = new JsonSlurper().parseText(retVal)	
     
     list.each {
-       println it
+       println it.body
     }	
 	
 	 
