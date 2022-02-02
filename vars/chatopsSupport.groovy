@@ -9,7 +9,10 @@ def call(Map args) {
     def retVal = command.execute().text.drop(1175).trim()
    
     def list = new JsonSlurper().parseText(retVal)	
-    println list	
+    
+    list.each {
+       println it
+    }	
 	
 	 
 	 
