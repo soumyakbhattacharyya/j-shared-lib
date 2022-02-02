@@ -1,12 +1,18 @@
+import net.sf.json.groovy.JsonSlurper
+
 def call(Map args) {
 	
-	def user = "soumyakbhattacharyya"
-	def tokenId = "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"
-	def url = "https://api.github.com/repos/soumyakbhattacharyya/to-be-used-for-jenkins-poc/issues/comments"
-	def command = "curl -i -u $user:#tokenId $url"
-	println command.execute().text
-	def retVal = command.execute().text
-	println retVal.drop(1175)
+    def user = "soumyakbhattacharyya"
+    def tokenId = "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"
+    def url = "https://api.github.com/repos/soumyakbhattacharyya/to-be-used-for-jenkins-poc/issues/comments"
+    def command = "curl -i -u $user:#tokenId $url"
+    def retVal = command.execute().text.drop(1175).trim()
+   
+    def list = new JsonSlurper().parseText(retVal)	
+    println list	
+	
+	 
+	 
 
 
     if (args.action == 'check') {
