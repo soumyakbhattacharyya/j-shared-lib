@@ -7,6 +7,8 @@ def call(Map args) {
     def url = "https://api.github.com/repos/soumyakbhattacharyya/to-be-used-for-jenkins-poc/issues/1/comments"
     def command = "curl -i -u $user:#tokenId $url"
     
+    println command.execute().text.drop(1175) 	
+	
     def count = 1;	
     while(count<20) {
        count++	     
