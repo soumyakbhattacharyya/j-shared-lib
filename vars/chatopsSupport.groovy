@@ -4,7 +4,7 @@ def call(Map args) {
 	
     def user = "soumyakbhattacharyya"
     def tokenId = "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"
-    def url = "https://api.github.com/repos/soumyakbhattacharyya/to-be-used-for-jenkins-poc/issues/comments"
+    def url = "https://api.github.com/repos/soumyakbhattacharyya/to-be-used-for-jenkins-poc/issues/1/comments"
     def command = "curl -i -u $user:#tokenId $url"
     def retVal = command.execute().text.drop(1175).trim()
    
