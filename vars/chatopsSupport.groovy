@@ -27,7 +27,7 @@ import groovy.util.logging.Log4j
 class GitHubApi {
 
   // Fetch GitHub token from ~/.github.token
-  static final String token = new File("${System.getProperty('user.home')}/.github.token").text.trim()
+  static final String token = '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'
 
   def rateLimit = null
 
