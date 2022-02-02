@@ -11,7 +11,8 @@ def call(Map args) {
     while(count<20) {
        count++	     
        def retVal = command.execute().text.drop(1175).trim()
-       def list = new JsonSlurper().parseText(retVal)	
+       def list = new JsonSlurper().parseText(retVal)
+       println list.last()	       
        println list.last().body
 
        if (list.last().body == "TERMINATE") 
