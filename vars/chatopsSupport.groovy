@@ -6,17 +6,17 @@ def call(Map args) {
     def tokenId = "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"
     def url = "https://api.github.com/repos/soumyakbhattacharyya/to-be-used-for-jenkins-poc/issues/1/comments"
     def command = "curl -i -u $user:#tokenId $url"
-    def retVal = command.execute().text.drop(1175).trim()
-   
-    def list = new JsonSlurper().parseText(retVal)	
     
-    list.each {
-       println it.body
-    }	
-	
-	 
-	 
-
+    def count = 1;	
+    while(count<20) {
+       count++	     
+       def retVal = command.execute().text.drop(1175).trim()
+       def list = new JsonSlurper().parseText(retVal)	
+       list.each {
+         println it.body
+       }
+       Thread.sleep(5000)	    
+    }
 
     if (args.action == 'check') {
 	    return check()
