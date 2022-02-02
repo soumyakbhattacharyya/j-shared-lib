@@ -4,8 +4,6 @@ import groovyx.net.http.HTTPBuilder
 import static groovyx.net.http.ContentType.*
 import static groovyx.net.http.Method.*
 
-#!/usr/bin/env groovy
-
 /*
  * GitHuB API for Groovy (respects rate limits)
  *
