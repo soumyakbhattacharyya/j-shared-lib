@@ -1,15 +1,18 @@
 @Grab(group='org.kohsuke', module='github-api', version='1.301')
+import org.kohsuke.github.GitHub
+import org.kohsuke.github.GitHubBuilder
 
 def call(Map args) {
 
     GitHub github = new GitHubBuilder().withOAuthToken("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").build();
 	
+    /*
 	def user = "soumyakbhattacharyya"
 	def tokenId = "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"
 	def url = "https://api.github.com/repos/soumyakbhattacharyya/to-be-used-for-jenkins-poc/issues/comments"
 	def command = "curl -i -u $user:#tokenId $url"
 	println command.execute().text
-
+    */
 
     if (args.action == 'check') {
 	    return check()
