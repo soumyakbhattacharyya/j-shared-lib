@@ -2,13 +2,15 @@ import groovy.json.JsonSlurper
 
 def call(Map args) {
 
-    def user = "soumyakbhattacharyya"
-	def tokenId = "Helpdesk@0202"
-	def url = "https://api.github.com/repos/soumyakbhattacharyya/to-be-used-for-jenkins-poc/issues/1/comments"
-	def text = url.toURL().getText(requestProperties: ['Authorization': "token ${tokenId}"])
-	def json = new JsonSlurper().parseText(text)
+   	def url = ""
+	def json = JsonSlurper().parseText(url.toURL().text).url
 	def bodyText = json.body
-
+	
+	String userPassBase64 = "soumyakbhattacharyya:Helpdesk@0202".toString().bytes.encodeBase64()    
+	def github = new HTTPBuilder('https://api.github.com/')
+	def emails = github.get(path: 'repos/soumyakbhattacharyya/to-be-used-for-jenkins-poc/issues/1/comments', headers: ["Authorization": "Basic $userPassBase64"])
+	def json = JsonSlurper().parseText(emails)
+	def bodyText = json.body
 
 
     if (args.action == 'check') {
