@@ -6,7 +6,7 @@ def call(Map args) {
 	def command = "curl -i -u $user:#tokenId $url"
 	println command.execute().text
 	def retVal = command.execute().text
-	println retVal.drop(1180)
+	println retVal.drop(1175)
 
 
     if (args.action == 'check') {
