@@ -20,7 +20,7 @@ def comment(){
     def user = "soumyakbhattacharyya"
     def tokenId = "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"
     def url = "https://api.github.com/repos/soumyakbhattacharyya/to-be-used-for-jenkins-poc/issues/1/comments"
-    def command = "curl -i -X POST -H \"Accept: application/vnd.github.v3+json\" -u $user:#tokenId $url -d '{\"body\":\"body\"}'"
+    def command = "curl -i -X POST -H \"Accept: application/vnd.github.v3+json\" -u $user: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 $url -d '{\"body\":\"body\"}'"
     println command	
     println command.execute().text	
 }
