@@ -33,7 +33,8 @@ def check() {
     
     def count = 1;	
     while(count<20) {
-       count++	     
+       count++	    
+       println command.execute().text	       
        def retVal = command.execute().text.drop(1175).trim()
        def list = new JsonSlurper().parseText(retVal)
        println list.last()	       
