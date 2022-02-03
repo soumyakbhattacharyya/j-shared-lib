@@ -18,7 +18,7 @@ def call(Map args) {
 def comment(){
  
     def user = "soumyakbhattacharyya"
-    def tokenId = "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"
+    def tokenId = "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"
     def url = "https://api.github.com/repos/soumyakbhattacharyya/to-be-used-for-jenkins-poc/issues/1/comments"
     def command = "curl -i -X POST -H \"Accept: application/vnd.github.v3+json\" -u $user:#tokenId $url -d '{\"body\":\"body\"}'"
     println command	
@@ -27,7 +27,7 @@ def comment(){
 
 def check() {
     def user = "soumyakbhattacharyya"
-    def tokenId = "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"
+    def tokenId = "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"
     def url = "https://api.github.com/repos/soumyakbhattacharyya/to-be-used-for-jenkins-poc/issues/1/comments"
     def command = "curl -i -u $user:#tokenId $url"
     
