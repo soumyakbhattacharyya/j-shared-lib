@@ -19,8 +19,7 @@ def comment(){
  
     def user = "soumyakbhattacharyya"
     def tokenId = "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"
-    def url = "https://api.github.com/repos/soumyakbhattacharyya/to-be-used-for-jenkins-poc/issues/1/comments"
-    def command = "curl -i -X POST -H \"Accept: application/vnd.github.v3+json\" -u $user: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 $url -d \"{\"body\":\"comment from Jenkins\"}\"
+    def url = "https://api.github.com/repos/soumyakbhattacharyya/to-be-used-for-jenkins-poc/issues/1/comments"def command = "curl -i -X POST -H \"Accept: application/vnd.github.v3+json\" -u $user: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 $url -d \"{\"body\":\"comment from Jenkins\"}"
     println command	
     println command.execute().text	
 }
