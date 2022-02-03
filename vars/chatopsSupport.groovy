@@ -20,7 +20,7 @@ def comment(){
     def user = "soumyakbhattacharyya"
     def tokenId = "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"
     def url = "https://api.github.com/repos/soumyakbhattacharyya/to-be-used-for-jenkins-poc/issues/1/comments"
-    def command = "curl -i -X POST -H \"Accept: application/vnd.github.v3+json\" -u $user:$tokenId $url -d '{\"body\":\"body\"}'"
+    def command = "curl -i -X POST -H \"Accept: application/vnd.github.v3+json\" -u $user:#tokenId $url -d '{\"body\":\"body\"}'"
     println command	
     println command.execute().text	
 }
@@ -29,7 +29,7 @@ def check() {
     def user = "soumyakbhattacharyya"
     def tokenId = "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"
     def url = "https://api.github.com/repos/soumyakbhattacharyya/to-be-used-for-jenkins-poc/issues/1/comments"
-    def command = "curl -i -u $user:$tokenId $url"
+    def command = "curl -i -u $user:#tokenId $url"
     
     def count = 1;	
     while(count<20) {
