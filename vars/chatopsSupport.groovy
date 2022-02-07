@@ -26,7 +26,7 @@ def comment(token){
     //def command = "curl -i -X POST -H \"Accept: application/vnd.github.v3+json\" -u $user:$token $url -d @params.json"
     //println command	
     //println command.execute().text
-    println ["curl", "-i", "-X POST", "-H 'Content-Type:application/vnd.github.v3+json'", "-u $user:$token","-d '{\"body\":\"comment from Jenkins\"}'", "https://api.github.com/repos/soumyakbhattacharyya/to-be-used-for-jenkins-poc/issues/1/comments"].execute().text	
+    ["curl", "-i", "-X POST", "-H 'Content-Type:application/vnd.github.v3+json'", "-u $user:$token","-d '{\"body\":\"comment from Jenkins\"}'", "https://api.github.com/repos/soumyakbhattacharyya/to-be-used-for-jenkins-poc/issues/1/comments"].execute().text	
 }
 
 def check(token) {
