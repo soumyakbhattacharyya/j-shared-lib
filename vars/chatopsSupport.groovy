@@ -1,3 +1,4 @@
+@Grab(group='com.github.groovy-wslite', module='groovy-wslite', version='1.1.3')
 import net.sf.json.groovy.JsonSlurper
 
 def call(Map args) {
@@ -22,9 +23,10 @@ def comment(token){
     def user = "soumyakbhattacharyya"
     def tokenId = token
     def url = "https://api.github.com/repos/soumyakbhattacharyya/to-be-used-for-jenkins-poc/issues/1/comments"
-    def command = "curl -i -X POST -H \"Accept: application/vnd.github.v3+json\" -u $user:$token $url -d @params.json"
-    println command	
-    println command.execute().text	
+    //def command = "curl -i -X POST -H \"Accept: application/vnd.github.v3+json\" -u $user:$token $url -d @params.json"
+    //println command	
+    //println command.execute().text
+    println ["curl", "-i", "-X POST", "-H 'Content-Type:application/vnd.github.v3+json'", "-u $user:$token","-d '{\"body\":\"comment from Jenkins\"}'", "https://api.github.com/repos/soumyakbhattacharyya/to-be-used-for-jenkins-poc/issues/1/comments"].execute().text	
 }
 
 def check(token) {
