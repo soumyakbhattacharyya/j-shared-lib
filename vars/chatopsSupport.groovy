@@ -2,38 +2,34 @@
 import net.sf.json.groovy.JsonSlurper
 
 def call(Map args) {
-	
+
+    // comment is the step at which Jenkins puts a comment to the pull request in question	
     if (args.action == 'comment') {
 	    return comment(args.token)
     }	
-	
+    
+    // check is the step where Jenkins looks up to find a comment that has been entered by user	
     if (args.action == 'check') {
 	    return check(args.token)
     }
+	
     if (args.action == 'terminateEnvironment') {
         return terminateEnvironment()
     }
     error 'chatopsSupport has been called without valid arguments'
 }
 
-def comment(token){
-	
-   println "token is following " + token	
- 
-    def user = "soumyakbhattacharyya"
+def comment(token){	
+    def user = <GITHUB_USER_ID>
     def tokenId = token
     def url = "https://api.github.com/repos/soumyakbhattacharyya/to-be-used-for-jenkins-poc/issues/1/comments"
-    //def command = "curl -i -X POST -H \"Accept: application/vnd.github.v3+json\" -u $user:$token $url -d @params.json"
-    //println command	
-    //println command.execute().text
-    ["curl", "-i", "-X POST", "-H 'Content-Type:application/vnd.github.v3+json'", "-u $user:$tokenId","-d '{\"body\":\"comment from Jenkins\"}'", "https://api.github.com/repos/soumyakbhattacharyya/to-be-used-for-jenkins-poc/issues/1/comments"].execute().text	
+    def command = "curl -i -X POST -H \"Accept: application/vnd.github.v3+json\" -u $user:$token $url -d "{\"body\":\"build has reached a state\"}"
+    println command.execute().text
 }
 
 def check(token) {
-
-    println token	
 	
-    def user = "soumyakbhattacharyya"
+    def user = <GITHUB_USER_ID>
     def tokenId = token
     def url = "https://api.github.com/repos/soumyakbhattacharyya/to-be-used-for-jenkins-poc/issues/1/comments"
     def command = "curl -i -u $user:#tokenId $url"
