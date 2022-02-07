@@ -17,7 +17,7 @@ def call(Map args) {
 
 def comment(token){
 	
-   println token	
+   println "token is following " + token	
  
     def user = "soumyakbhattacharyya"
     def tokenId = token
